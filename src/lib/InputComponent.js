@@ -59,6 +59,7 @@ export class InputComponent extends React.Component{
         validationFunction has to return an object in case of error,
           true in case of successful validation
          */
+        this.valid = true;
         this.props.validationFunction.map((valFn, i)=>{
 
           let validationResult = valFn(value, this);
@@ -69,7 +70,7 @@ export class InputComponent extends React.Component{
             this.valid = false;
           }
 
-        })
+        }, this)
       } else {
         let validationResult = this.props.validationFunction(value, this);
         if(validationResult === true){
